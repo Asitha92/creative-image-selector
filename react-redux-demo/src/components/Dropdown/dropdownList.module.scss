@@ -1,0 +1,39 @@
+.dropdownList {
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Open Sans semibold", Calibri, Tahoma, sans-serif;
+  background: #ffffff;
+  border: solid 1px #c7c7c7;
+  border-radius: 3px;
+  color: #252525;
+  height: 36px;
+  width: 90%;
+  padding: 0 12px 0 12px;
+  position: relative;
+  width: 220px;
+  &_dropIcon {
+    svg {
+      position: absolute;
+      height: 24px !important;
+      width: 24px !important;
+      right: 6px;
+      top: 12px;
+      transform: translateY(-50%);
+    }
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1977d4;
+    outline: 0;
+  }
+}
+
+.select {
+  height: 36px;
+  width: 100%;
+  &_option {
+    option {
+      min-height: 50px !important;
+      width: 150px;
+    }
+  }
+}

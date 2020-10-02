@@ -1,0 +1,29 @@
+.btn_styles {
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid #6a7070;
+  border-radius: 8px;
+  color: #6a7070;
+  cursor: pointer;
+  font-family: "Open Sans semibold", Calibri, Tahoma, sans-serif;
+  font-weight: 600;
+  height: 32px;
+  justify-content: center;
+  padding: 0 24px 0 24px;
+  width: 120px;
+  margin-bottom: 20px;
+  &:disabled {
+    background-color: rgba(217, 217, 217, 0.6);
+    border: none;
+    color: #6a7070;
+    pointer-events: none;
+  }
+  &:hover {
+    background-color: #bdbebe;
+    color: #252525;
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1977D4;
+    outline: 0;
+  }
+}

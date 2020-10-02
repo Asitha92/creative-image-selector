@@ -1,0 +1,12 @@
+.close_btn {
+  float: right;
+  z-index: 1;
+}
+
+.image {
+  object-fit: fill;
+  border-radius: 4px;
+  padding: 5px;
+  max-width: 100%;
+  height: auto;
+}
