@@ -30,25 +30,21 @@ const initialState = {
 const carReducer = (state: VehicleState = initialState, action) => {
   switch (action.type) {
     case UPDATE_VEHICLES:
-      console.log("action payload", action.payload);
       return {
         ...state,
         vehicleResults: action.payload,
       };
     case UPDATE_INPUT:
-      console.log("action payload", action.payload);
       return {
         ...state,
         input: action.payload,
       };
     case TAGS:
-      console.log("action payload", action.payload);
       return {
         ...state,
         tags: action.payload,
       };
     case SEARCH_LIST:
-      console.log("action payload", action.payload);
       return {
         ...state,
         searchList: action.payload,
