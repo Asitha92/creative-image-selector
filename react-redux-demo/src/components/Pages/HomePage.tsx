@@ -86,13 +86,16 @@ class HomePage extends Component<Props, State> {
       .catch((error) => {
         console.error(error.message);
       });
+
+    this.clearFields();
   };
 
   clearFields = () => {
     let optionList: Option[] = [];
     let input: string = "";
     this.props.updateTags(optionList);
-    this.props.updateInputText(input);
+    this.props.updateInputText("");
+    console.log("ha ha", this.props.input);
   };
 
   onfilter = () => {
@@ -242,7 +245,7 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     updateInputText: (input: string) => {
-      dispatch(updateTags(input));
+      dispatch(updateInputText(input));
     },
 
     UpdateSeachList: (vehicleSeachList: Vehicle[]) => {
