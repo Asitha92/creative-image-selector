@@ -33,6 +33,4 @@ Futher development -
 
 1. Closing image button update later in list panel.
 
-2. Clear function need fix.(clearing payload but has no impact on UI).
-
-3. Need to enter loading indicator.
+2. Need to enter loading indicator.
