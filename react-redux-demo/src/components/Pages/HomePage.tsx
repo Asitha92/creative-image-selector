@@ -8,7 +8,12 @@ import ListPanel from "../ListPanel";
 import { optionList, tagNames } from "../common";
 import { Multiselect } from "multiselect-react-dropdown";
 import { connect } from "react-redux";
-import { updateVehicles, updateTags, updateInputText, UpdateSeachList } from "../../redux";
+import {
+  updateVehicles,
+  updateTags,
+  updateInputText,
+  UpdateSeachList,
+} from "../../redux";
 import ImageViewer from "../ImageViewer";
 
 type Vehicle = {
@@ -40,6 +45,7 @@ interface State {
   tags: Option[];
   leftPanelSelect: {};
   pageChanged: boolean;
+  selectedType: string;
 }
 
 class HomePage extends Component<Props, State> {
@@ -51,6 +57,7 @@ class HomePage extends Component<Props, State> {
       tags: [],
       leftPanelSelect: {},
       pageChanged: false,
+      selectedType: "",
     };
   }
 
@@ -71,9 +78,9 @@ class HomePage extends Component<Props, State> {
     await axios
       .get(`http://localhost:5000/${value}`)
       .then((res) => {
-        this.setState({ vehicleData: res.data }, () => {
+        this.setState({ vehicleData: res.data, selectedType: value }, () => {
           this.props.updateVehicles(this.state.vehicleData);
-          this.props.UpdateSeachList(this.state.vehicleData)
+          this.props.UpdateSeachList(this.state.vehicleData);
         });
       })
       .catch((error) => {
@@ -127,6 +134,9 @@ class HomePage extends Component<Props, State> {
               searchedArray.push(item);
             }
           }
+        } else if (this.props.tags.length === 0 && this.props.input === "") {
+          console.log(this.state.selectedType);
+          this.onCategorySelect(this.state.selectedType);
         }
       });
     } else {

@@ -5,7 +5,6 @@ const fs = require("fs");
 const bodyparser = require("body-parser");
 let data = fs.readFileSync("carData.json", "utf8");
 let vehicles = JSON.parse(data);
-// console.log("vehicles", vehicles);
 
 const app = express();
 const port = 5000;

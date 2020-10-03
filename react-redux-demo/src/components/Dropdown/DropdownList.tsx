@@ -45,7 +45,6 @@ class DropdownList extends Component<Props, State> {
           onChange={this.handleChange}
           className={styles.select}
         >
-          <option className={styles.select_option}></option>
           {this.props.optionList.map((option) => (
             <option
               className={styles.select_option}
