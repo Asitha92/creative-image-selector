@@ -23,13 +23,14 @@ type State = {
 class InputText extends Component<Props, State> {
   constructor(props) {
     super(props);
+
+    this.state = {
+      inputTextValue: "",
+    };
   }
 
   handleChange = (event) => {
-    // this.setState({ inputTextValue: event.target.value }, () => {
-    this.props.updateInputText(event.target.value);
-    console.log(this.props.input);
-    // });
+      this.props.updateInputText(event.target.value);
   };
 
   render() {

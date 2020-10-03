@@ -49,8 +49,10 @@ interface State {
 }
 
 class HomePage extends Component<Props, State> {
+  multiselectRef: React.RefObject<any>;
   constructor(props) {
     super(props);
+    this.multiselectRef = React.createRef();
 
     this.state = {
       vehicleData: [],
@@ -70,7 +72,6 @@ class HomePage extends Component<Props, State> {
   onSelect = (selectedList: Option[]) => {
     this.setState({ tags: selectedList }, () => {
       this.props.updateTags(this.state.tags);
-      console.log("selected tags", this.props.tags);
     });
   };
 
@@ -92,10 +93,10 @@ class HomePage extends Component<Props, State> {
 
   clearFields = () => {
     let optionList: Option[] = [];
-    let input: string = "";
     this.props.updateTags(optionList);
     this.props.updateInputText("");
-    console.log("ha ha", this.props.input);
+    this.multiselectRef.current.resetSelectedValues();
+    
   };
 
   onfilter = () => {
@@ -194,6 +195,7 @@ class HomePage extends Component<Props, State> {
               </div>
               <h5 style={{ marginBottom: "5px", textAlign: "left" }}>Tags</h5>
               <Multiselect
+                ref={this.multiselectRef}
                 style={style}
                 options={tagNames}
                 selectedValues={""}
