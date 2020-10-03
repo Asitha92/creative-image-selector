@@ -3,10 +3,11 @@ Guide to Start...
 1. Redirect your cmd terminal to demo-backend.
 2. npm install
 3. npm run devStart
-4. This will open server and listen using port 5000
+4. This will open server and listen using port 5000.
 5. Redirect another cmd terminal to react-redux-demo.
 6. npm install
 7. npm start
+8. Open web browser and use local host to load program.
 
 
 ASSUMPTIONS - 
