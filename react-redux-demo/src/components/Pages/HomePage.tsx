@@ -73,6 +73,7 @@ class HomePage extends Component<Props, State> {
       .then((res) => {
         this.setState({ vehicleData: res.data }, () => {
           this.props.updateVehicles(this.state.vehicleData);
+          this.props.UpdateSeachList(this.state.vehicleData)
         });
       })
       .catch((error) => {
