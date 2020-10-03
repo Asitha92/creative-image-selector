@@ -8,7 +8,7 @@ import ListPanel from "../ListPanel";
 import { optionList, tagNames } from "../common";
 import { Multiselect } from "multiselect-react-dropdown";
 import { connect } from "react-redux";
-import { updateVehicles, updateTags, updateInputText } from "../../redux";
+import { updateVehicles, updateTags, updateInputText, UpdateSeachList } from "../../redux";
 import ImageViewer from "../ImageViewer";
 
 type Vehicle = {
@@ -26,11 +26,13 @@ type Option = {
 
 interface Props {
   updateVehicles: (value: any) => void;
-  vehicleResults: Vehicle[];
   updateTags: (selectedList: Option[]) => void;
   updateInputText: (inputValue: string) => void;
+  UpdateSeachList: (vehicleSeachList: Vehicle[]) => void;
+  vehicleResults: Vehicle[];
   tags: Option[];
   input: string;
+  searchList: Vehicle[];
 }
 
 interface State {
@@ -129,7 +131,7 @@ class HomePage extends Component<Props, State> {
     } else {
       alert("Filtered values not valid.Please try again.");
     }
-    this.props.updateVehicles(searchedArray);
+    this.props.UpdateSeachList(searchedArray);
   };
 
   showImages = (value: string) => {
@@ -195,11 +197,12 @@ class HomePage extends Component<Props, State> {
               {/* Results panel starts here */}
               <h3 className={styles.header_results}>Results</h3>
               <ListPanel
-                results={this.props.vehicleResults}
+                results={this.props.searchList}
                 showImages={this.showImages}
               />
             </div>
           </div>
+          {/* Image viewer starts here */}
           <div className={styles.rightPanel}>
             <ImageViewer vehicle={this.state.leftPanelSelect} />
           </div>
@@ -214,6 +217,7 @@ const mapStateToProps = (state) => {
     vehicleResults: state.vehicleResults,
     tags: state.tags,
     input: state.input,
+    searchList: state.searchList,
   };
 };
 
@@ -228,6 +232,10 @@ const mapDispatchToProps = (dispatch) => {
 
     updateInputText: (input: string) => {
       dispatch(updateTags(input));
+    },
+
+    UpdateSeachList: (vehicleSeachList: Vehicle[]) => {
+      dispatch(UpdateSeachList(vehicleSeachList));
     },
   };
 };

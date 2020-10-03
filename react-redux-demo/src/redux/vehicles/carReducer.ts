@@ -1,4 +1,4 @@
-import { UPDATE_VEHICLES, UPDATE_INPUT, TAGS } from "./carTypes";
+import { UPDATE_VEHICLES, UPDATE_INPUT, TAGS, SEARCH_LIST } from "./carTypes";
 
 type Tag = {
   id: string;
@@ -15,8 +15,8 @@ type Vehicle = {
 
 export interface VehicleState {
   vehicleResults: any[];
-  input: string,
-  tags: Tag[],
+  input: string;
+  tags: Tag[];
 }
 
 const initialState = {
@@ -24,6 +24,7 @@ const initialState = {
   input: "",
   tags: [],
   leftPanelSelect: "",
+  searchList: [],
 };
 
 const carReducer = (state: VehicleState = initialState, action) => {
@@ -45,6 +46,12 @@ const carReducer = (state: VehicleState = initialState, action) => {
       return {
         ...state,
         tags: action.payload,
+      };
+    case SEARCH_LIST:
+      console.log("action payload", action.payload);
+      return {
+        ...state,
+        searchList: action.payload,
       };
 
     default:
